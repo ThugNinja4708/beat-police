@@ -423,14 +423,18 @@ export default function AdminDashboard({ user, onLogout }) {
                         <select
                           id="assignment-officer"
                           data-testid="assignment-officer-select"
-                          className="w-full px-3 py-2 border rounded-md"
+                          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                           value={newAssignment.officer_id}
                           onChange={(e) => setNewAssignment({ ...newAssignment, officer_id: e.target.value })}
                           required
                         >
                           <option value="">Select an officer</option>
                           {officers.map((officer) => (
-                            <option key={officer.id} value={officer.id}>
+                            <option 
+                              key={officer.id} 
+                              value={officer.id}
+                              data-testid={`officer-option-${officer.id}`}
+                            >
                               {officer.full_name} {officer.badge_number ? `(#${officer.badge_number})` : ''}
                             </option>
                           ))}
